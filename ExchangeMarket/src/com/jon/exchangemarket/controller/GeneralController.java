@@ -8,6 +8,7 @@ public class GeneralController extends Controller {
 	@Before(LoginInterceptor.class)
 	public void index() {
 		render("index.html");
+		// Go on without freemaker
 	}
 	
 	public void secondFunction(){
