@@ -8,7 +8,6 @@ public class GeneralController extends Controller {
 	@Before(LoginInterceptor.class)
 	public void index() {
 		render("index.html");
-		// TODO add Freemarker
 	}
 	
 	public void secondFunction(){
