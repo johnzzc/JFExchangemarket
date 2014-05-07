@@ -1,3 +1,4 @@
+
 package com.jon.exchangemarket.controller;
 
 import com.jfinal.aop.Before;
@@ -8,10 +9,11 @@ public class GeneralController extends Controller {
 	@Before(LoginInterceptor.class)
 	public void index() {
 		render("index.html");
-		//sync laptop0507
+		//sync laptop0507 
 	}
 	
 	public void secondFunction(){
 		
 	}
 }
+
