@@ -1,4 +1,3 @@
-
 package com.jon.exchangemarket.controller;
 
 import com.jfinal.aop.Before;
@@ -16,4 +15,3 @@ public class GeneralController extends Controller {
 		
 	}
 }
-
