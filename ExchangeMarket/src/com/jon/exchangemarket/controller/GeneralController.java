@@ -10,9 +10,10 @@ import com.jon.exchangemarket.model.Orders;
 public class GeneralController extends Controller {
 	@Before(LoginInterceptor.class)
 	public void index() {
-		//List<Orders> order = Orders.dao.listAll();
-		//System.out.println(order.toArray());
-		render("index.html");
+		System.out.println("ininininininn");
+		List<Orders> order = Orders.dao.listAll();
+		System.out.println(order.toArray());
+		render("/index.html");
 
 	}
 

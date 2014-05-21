@@ -26,7 +26,7 @@ public class JFConfig extends JFinalConfig {
 
 	@Override
 	public void configRoute(Routes me) {
-		me.add("/index", GeneralController.class);
+		me.add("/", GeneralController.class);
 	}
 
 	@Override
@@ -45,11 +45,11 @@ public class JFConfig extends JFinalConfig {
 		me.add(cp);
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
 		me.add(arp);
-		/*arp.setDialect(new MysqlDialect());
+		arp.setDialect(new MysqlDialect());
 		arp.addMapping("em_goods", "goodsid" , Goods.class);
 		arp.addMapping("em_order", "orderid" ,Orders.class);
 		arp.addMapping("em_user", "userid" ,Users.class);
-*/
+
 	}
 
 }
