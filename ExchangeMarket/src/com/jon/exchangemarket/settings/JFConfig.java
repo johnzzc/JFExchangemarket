@@ -11,16 +11,16 @@ import com.jfinal.plugin.activerecord.dialect.MysqlDialect;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
 import com.jon.exchangemarket.controller.GeneralController;
-import com.jon.exchangemarket.interceptor.LoginInterceptor;
 import com.jon.exchangemarket.model.Goods;
-import com.jon.exchangemarket.model.Orders;
-import com.jon.exchangemarket.model.Users;
+import com.jon.exchangemarket.model.Order;
+import com.jon.exchangemarket.model.User;
 
 public class JFConfig extends JFinalConfig {
 
 	@Override
 	public void configConstant(Constants me) {
 		me.setDevMode(true);
+		// View Type default is Freemarker
 		me.setViewType(ViewType.JSP);
 	}
 
@@ -36,7 +36,7 @@ public class JFConfig extends JFinalConfig {
 
 	@Override
 	public void configInterceptor(Interceptors me) {
-		me.add(new LoginInterceptor());
+		//me.add(new LoginInterceptor());
 	}
 
 	@Override
@@ -46,9 +46,10 @@ public class JFConfig extends JFinalConfig {
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(cp);
 		me.add(arp);
 		arp.setDialect(new MysqlDialect());
+		// Database mapping
 		arp.addMapping("em_goods", "goodsid" , Goods.class);
-		arp.addMapping("em_order", "orderid" ,Orders.class);
-		arp.addMapping("em_user", "userid" ,Users.class);
+		arp.addMapping("em_order", "orderid" ,Order.class);
+		arp.addMapping("em_user", "userid" ,User.class);
 
 	}
 

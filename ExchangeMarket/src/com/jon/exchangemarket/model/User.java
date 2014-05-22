@@ -2,7 +2,7 @@ package com.jon.exchangemarket.model;
 
 import com.jfinal.plugin.activerecord.Model;
 
-public class Users extends Model<Users> {
-	public static final Users dao = new Users();
+public class User extends Model<User> {
+	public static final User dao = new User();
 
 }
