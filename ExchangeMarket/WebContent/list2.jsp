@@ -7,30 +7,34 @@
 <script src="js/jquery.min.js"></script>
 </head>
 <body>
-<table border=1px>
-<thead>
-	<tr>
-		<th>Seller</th>
-		<th>Selling Item</th>
-		<th>Buyer</th>
-		<th>Exchange Item</th>
-		<th>Status</th>
-		<th>Last Edited Time</th>
-	</tr>
-</thead>
-<tbody>
-	<tr id="order">
-		<td>aaa</td>
-		<td>good1</td>
-		<td>bbb</td>
-		<td>good2</td>
-		<td id="status" name="sampleName" value="hold">hold</td>
-		<td>2014-05-23</td>
-	</tr>
-</tbody>
-</table>
-<input id="btnSubmit" type="submit">
-<input id="btnSubmit" type="reset">
+<form method="post" action="/update" id="orderListForm">
+	<table border=1px>
+		<thead>
+			<tr>
+				<th>Seller</th>
+				<th>Selling Item</th>
+				<th>Buyer</th>
+				<th>Exchange Item</th>
+				<th>Status</th>
+				<th>Last Edited Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			<#list orderList as order>
+			<tr id="order${order.orderid}">
+				<td>${order.sellerid}</td>
+				<td>${order.sellgoodsid}</td>
+				<td>${order.buyerid}</td>
+				<td>${order.exchangegoodsid}</td>
+				<td id="status${order.orderid}" name="sampleName" value="${order.status}">${order.status}</td>
+				<td>${order.lastactiontime}</td>
+			</tr>
+			</#list>
+		</tbody>
+		</table>
+	<input id="btnSubmit" type="submit">
+	<input id="btnSubmit" type="reset">
+</form>
 </body>
 </html>
 
@@ -79,7 +83,7 @@ function tdclick(){
          	//只有当内容不一样时才进行保存
             if(inputext != text && inputext != ""){                    
                  //调用该方法与后台交互
-                sampleNameUpdate(sampleId, inputext, 'save');
+                sampleNameUpdate(sampleId, inputext, '/update');
             }
         }
     });
@@ -114,14 +118,5 @@ function sampleNameUpdate(id, content, tagAction){
             }
         }
     });
-}
-function submitAjax(id, content, tagAction) {
-	$.post("searchCases", $("#searchForm").serialize(),
-			function(data, status) {
-				$("#resultdiv").html("" + data);
-			}).complete(function() {
-				$("#submitfrmbtn").removeAttr('disabled');
-				$("#waiting").hide();
-	});
 }
 </script>
